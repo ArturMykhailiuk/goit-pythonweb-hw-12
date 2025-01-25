@@ -1,6 +1,15 @@
-# Contacts API
+# Contacts API v.1
 
 This project is a REST API for managing contacts, built using FastAPI and SQLAlchemy. The API allows you to create, read, update, and delete contacts, as well as search for contacts by name, last name, or email, and get a list of contacts with upcoming birthdays.
+
+## Additional features added in this release
+
+- Реалізовано механізм аутентифікації в застосунку
+- Реалізовано механізм авторизації за допомогою JWT-токенів
+- Реалізовано механізм верифікації електронної пошти зареєстрованого користувача.
+- Обмежено кількість запитів до маршруту користувача /me.
+- Додано CORS для свого REST API.
+- Реалізовано можливість оновлення аватара користувача (використовуйться сервіс Cloudinary).
 
 ## Features
 

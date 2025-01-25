@@ -7,13 +7,22 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-fastapi = "^0.115.6"
-uvicorn = "^0.34.0"
 sqlalchemy = "^2.0.37"
+alembic = "^1.14.1"
+fastapi = "^0.115.7"
+uvicorn = "^0.34.0"
 psycopg2-binary = "^2.9.10"
-pydantic = "^2.10.5"
-alembic = "^1.14.0"
+pydentic = "^0.0.1.dev3"
 asyncpg = "^0.30.0"
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+gravatar = "^0.1"
+libgravatar = "^1.0.4"
+python-multipart = "^0.0.20"
+pydantic-settings = "^2.7.1"
+fastapi-mail = "^1.4.2"
+slowapi = "^0.1.9"
+cloudinary = "^1.42.1"
 
 
 [build-system]
