@@ -11,6 +11,8 @@ from src.database.db import get_db
 from src.conf.config import settings
 from src.services.users import UserService
 
+from src.database.models import User, UserRole
+
 class Hash:
     pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -80,4 +82,15 @@ async def get_email_from_token(token: str):
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
             detail="Невірний токен для перевірки електронної пошти",
         )
+        
+# Залежності для перевірки ролей
+def get_current_moderator_user(current_user: User = Depends(get_current_user)):
+    if current_user.role not in [UserRole.MODERATOR, UserRole.ADMIN]:
+        raise HTTPException(status_code=403, detail="Недостатньо прав доступу")
+    return current_user
+
+def get_current_admin_user(current_user: User = Depends(get_current_user)):
+    if current_user.role != UserRole.ADMIN:
+        raise HTTPException(status_code=403, detail="Недостатньо прав доступу")
+    return current_user
 

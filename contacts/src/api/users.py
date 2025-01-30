@@ -30,11 +30,25 @@ async def update_avatar_user(
     user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
 ):
+    """
+    Update the avatar of the current user.
+
+    Parameters:
+    - file: The file to upload as the avatar.
+    - user: The current authenticated user.
+    - db: Database session dependency.
+
+    Returns:
+    - The updated user data.
+    """
+    # Upload the file to Cloudinary
     avatar_url = UploadFileService(
         settings.CLD_NAME, settings.CLD_API_KEY, settings.CLD_API_SECRET
     ).upload_file(file, user.username)
 
+    # Update the user's avatar URL
     user_service = UserService(db)
     user = await user_service.update_avatar_url(user.email, avatar_url)
 
+    # Return the updated user
     return user

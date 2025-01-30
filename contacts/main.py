@@ -1,3 +1,11 @@
+import os
+from dotenv import load_dotenv
+
+# Завантаження змінних середовища з файлу .env
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '.env'))
+
+
+
 from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import JSONResponse
